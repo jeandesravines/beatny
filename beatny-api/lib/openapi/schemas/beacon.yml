@@ -1,0 +1,28 @@
+Beacon:
+  title: Beacon
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      type: string
+    place:
+      $ref: './place.yml#/Place'
+    uuid:
+      type: string
+      format: uuid
+    major:
+      type: integer
+      minimum: 0
+      maximum: 65535
+    minor:
+      type: integer
+      minimum: 0
+      maximum: 65535
+    location:
+      $ref: './location.yml#/Location'
+  required:
+    - id
+    - uuid
+    - major
+    - minor
+    - coordinates

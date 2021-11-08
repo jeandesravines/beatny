@@ -1,0 +1,46 @@
+Playlist:
+  title: Playlist
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      type: string
+    uid:
+      type: string
+    features:
+      type: object
+      additionalProperties:
+        type: number
+    settings:
+      type: object
+      properties:
+        minScore:
+          type: number
+          minimum: 0
+          maximum: 1
+    genres:
+      type: array
+      items:
+        type: string
+    createdAt:
+      type: integer
+    updatedAt:
+      type: integer
+  required:
+    - id
+    - uid
+    - genres
+    - settings
+    - features
+
+Tracks:
+  title: PlaylistTracks
+  type: array
+  items:
+    type: object
+    additionalProperties: false
+    properties:
+      track:
+        $ref: './track.yml#/Track'
+    required:
+      - track

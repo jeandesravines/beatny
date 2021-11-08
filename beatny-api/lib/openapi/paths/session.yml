@@ -1,0 +1,44 @@
+mySession:
+  post:
+    tags:
+      - Session
+    operationId: SessionController.post
+    security:
+      - oauth_token: []
+    x-middlewares:
+      - acl: { is: [client] }
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              uuid:
+                $ref: '../schemas/beacon.yml#/Beacon/properties/uuid'
+              major:
+                $ref: '../schemas/beacon.yml#/Beacon/properties/major'
+              minor:
+                $ref: '../schemas/beacon.yml#/Beacon/properties/minor'
+              location:
+                $ref: '../schemas/beacon.yml#/Beacon/properties/location'
+            required:
+              - uuid
+              - major
+              - minor
+              - location
+    responses:
+      '201':
+        description: Created
+
+  delete:
+    tags:
+      - Session
+    operationId: SessionController.delete
+    security:
+      - oauth_token: []
+    x-middlewares:
+      - acl: { is: [client] }
+    responses:
+      '204':
+        description: No Content

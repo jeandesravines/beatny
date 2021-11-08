@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  api:
+    build: beatny-api
+    env_file: beatny-api/.env
+    restart: always
+    ports:
+      - '4000:8080'
+    depends_on:
+      - api-graphql
+      - api-redis
+    healthcheck:
+      test: wget --spider http://localhost:8080/status
+
+  api-graphql:
+    build: beatny-api-graphql
+    env_file: beatny-api-graphql/.env
+    restart: always
+    healthcheck:
+      test: |
+        wget \
+          --spider \
+          --post-data='{ "query": "{statusGet { ok } }" }' \
+          --header='Content-Type: application/json' \
+          http://localhost:8080
+
+  api-redis:
+    image: redis:alpine
+    restart: always
+    command: redis-server --appendonly yes --tcp-backlog 128
+    healthcheck:
+      test: redis-cli PING

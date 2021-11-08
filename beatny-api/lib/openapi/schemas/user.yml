@@ -1,0 +1,17 @@
+User:
+  title: User
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      type: string
+    email:
+      type: string
+    tracks:
+      type: array
+      items:
+        $ref: './track.yml#/Track'
+  required:
+    - id
+    - email
+    - tracks

@@ -1,0 +1,18 @@
+Status:
+  title: Status
+  type: object
+  additionalProperties: false
+  properties:
+    ok:
+      type: boolean
+    date:
+      type: string
+    env:
+      type: string
+    instanceId:
+      type: string
+  required:
+    - date
+    - env
+    - instanceId
+    - ok

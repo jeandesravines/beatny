@@ -1,0 +1,42 @@
+auth:
+  get:
+    tags:
+      - Authentication
+      - Spotify
+    operationId: SpotifyAuthController.auth
+    parameters:
+      - name: isPlace
+        in: query
+        schema:
+          type: boolean
+    responses:
+      '302':
+        description: Redirect
+
+callback:
+  get:
+    tags:
+      - Authentication
+      - Spotify
+    operationId: SpotifyAuthController.callback
+    parameters:
+      - name: code
+        in: query
+        schema:
+          type: string
+      - name: error
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+        application/json:
+          schema:
+            $ref: '../schemas/auth.yml#/AccessToken'
+      '401':
+        description: Unauthorized

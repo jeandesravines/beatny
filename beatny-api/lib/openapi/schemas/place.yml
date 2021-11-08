@@ -1,0 +1,36 @@
+Place:
+  title: Place
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      type: string
+    playlist:
+      $ref: './playlist.yml#/Playlist'
+    genres:
+      type: array
+      items:
+        type: string
+    location:
+      location:
+        $ref: './location.yml#/Location'
+    users:
+      type: array
+      items:
+        type: object
+        properties:
+          user:
+            $ref: './user.yml#/User'
+          access:
+            $ref: '#/PlaceUserAccess'
+        required:
+          - user
+          - access
+  required:
+    - id
+
+PlaceUserAccess:
+  type: string
+  enum:
+    - ro
+    - rw

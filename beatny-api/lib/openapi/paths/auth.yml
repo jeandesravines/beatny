@@ -1,0 +1,24 @@
+refreshToken:
+  post:
+    tags:
+      - Authentication
+    operationId: AuthController.refreshToken
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              refreshToken:
+                type: string
+            required:
+              - refreshToken
+    responses:
+      '200':
+        description: The new access token
+        application/json:
+          schema:
+            $ref: '../schemas/auth.yml#/RefreshToken'
+      '401':
+        description: Unauthorized

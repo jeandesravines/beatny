@@ -1,0 +1,79 @@
+reset:
+  post:
+    tags:
+      - Playlist
+    operationId: PlaylistController.reset
+    security:
+      - oauth_token: []
+    parameters:
+      - name: playlistId
+        in: path
+        required: true
+        schema:
+          $ref: '../schemas/playlist.yml#/Playlist/properties/id'
+    x-middlewares:
+      - acl: { is: [admin] }
+      - entity: { name: Playlist, key: playlistId, target: playlist }
+    responses:
+      '204':
+        description: No Content
+
+fillUp:
+  post:
+    tags:
+      - Playlist
+    operationId: PlaylistController.fillUp
+    security:
+      - oauth_token: []
+    parameters:
+      - name: playlistId
+        in: path
+        required: true
+        schema:
+          $ref: '../schemas/playlist.yml#/Playlist/properties/id'
+    x-middlewares:
+      - acl: { is: [admin] }
+      - entity: { name: Playlist, key: playlistId, target: playlist }
+    responses:
+      '200':
+        description: OK
+
+predict:
+  post:
+    tags:
+      - Playlist
+    operationId: PlaylistController.predict
+    security:
+      - oauth_token: []
+    parameters:
+      - name: playlistId
+        in: path
+        required: true
+        schema:
+          $ref: '../schemas/playlist.yml#/Playlist/properties/id'
+    x-middlewares:
+      - acl: { is: [admin] }
+      - entity: { name: Playlist, key: playlistId, target: playlist }
+    responses:
+      '204':
+        description: No Content
+
+synchronize:
+  post:
+    tags:
+      - Playlist
+    operationId: PlaylistController.synchronize
+    security:
+      - oauth_token: []
+    parameters:
+      - name: playlistId
+        in: path
+        required: true
+        schema:
+          $ref: '../schemas/playlist.yml#/Playlist/properties/id'
+    x-middlewares:
+      - acl: { is: [admin] }
+      - entity: { name: Playlist, key: playlistId, target: playlist }
+    responses:
+      '200':
+        description: OK

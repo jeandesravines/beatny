@@ -1,0 +1,12 @@
+status:
+  get:
+    tags:
+      - Status
+    operationId: StatusController.status
+    responses:
+      '200':
+        description: OK
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/status.yml#/Status'

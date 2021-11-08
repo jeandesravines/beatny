@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Beatny API
+  description: Beatny API
+  contact:
+    name: Jean Desravines
+    email: hi@jeandesravines.com
+
+servers:
+  - url: http://localhost:3000
+    description: Localhost
+
+components:
+  securitySchemes:
+    oauth_token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /auth/token/refresh:
+    $ref: './paths/auth.yml#/refreshToken'
+
+  /auth/spotify:
+    $ref: './paths/auth-spotify.yml#/auth'
+
+  /auth/spotify/callback:
+    $ref: './paths/auth-spotify.yml#/callback'
+
+  /auth/deezer:
+    $ref: './paths/auth-deezer.yml#/auth'
+
+  /auth/deezer/callback:
+    $ref: './paths/auth-deezer.yml#/callback'
+
+  /sessions/me:
+    $ref: './paths/session.yml#/mySession'
+
+  /playlists/{playlistId}/reset:
+    $ref: './paths/playlist.yml#/reset'
+
+  /playlists/{playlistId}/fill-up:
+    $ref: './paths/playlist.yml#/fillUp'
+
+  /playlists/{playlistId}/predict:
+    $ref: './paths/playlist.yml#/predict'
+
+  /playlists/{playlistId}/synchronize:
+    $ref: './paths/playlist.yml#/synchronize'
+
+  /status:
+    $ref: './paths/status.yml#/status'

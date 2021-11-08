@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "env": {
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "complexity": ["warn", 10],
+    "import/no-cycle": ["off"],
+    "import/prefer-default-export": ["off"],
+    "no-console": ["error"],
+    "no-warning-comments": ["warn"],
+    "prefer-destructuring": ["off"],
+    "require-jsdoc": ["error", {
+      "require": {
+        "ClassDeclaration": true,
+        "MethodDefinition": true
+      }
+    }],
+    "valid-jsdoc": ["error", {
+      // "matchDescription": ".+",
+      "prefer": {"return": "returns"},
+      "requireParamType": true,
+      "requireParamDescription": false,
+      "requireReturnDescription": false
+    }]
+  }
+}

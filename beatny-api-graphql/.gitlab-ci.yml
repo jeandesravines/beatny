@@ -1,0 +1,20 @@
+image: docker
+
+services:
+  - docker:dind
+
+variables:
+  IMAGE_BUILD_NAME: ${CI_PROJECT_PATH}:${CI_COMMIT_SHA}
+  IMAGE_RELEASE_NAME: ${CI_PROJECT_PATH}:latest
+
+stages:
+  - test
+
+lint_and_test:
+  stage: test
+  coverage: '/^All files.+\s(\d+\.?\d+)\s\|\s+\|$/'
+  before_script:
+    - docker build --target builder --tag $IMAGE_BUILD_NAME .
+  script:
+    - docker run --rm --env-file .env.test $IMAGE_BUILD_NAME yarn lint
+    - docker run --rm --env-file .env.test $IMAGE_BUILD_NAME yarn test --coverage --ci

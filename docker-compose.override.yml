@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  api:
+    build:
+      context: beatny-api
+      target: workspace
+    ports:
+      - '4000:8080'
+      - '4050:3050'
+    volumes:
+      - './beatny-api:/usr/app'
+      - '/usr/app/node_modules'
+    healthcheck:
+      disable: true
+
+  api-graphql:
+    build:
+      context: beatny-api-graphql
+      target: workspace
+    ports:
+      - '4001:8080'
+    volumes:
+      - './beatny-api-graphql:/usr/app'
+      - '/usr/app/node_modules'
+    healthcheck:
+      disable: true

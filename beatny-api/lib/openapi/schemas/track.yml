@@ -1,0 +1,34 @@
+Track:
+  title: Track
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      type: string
+    genres:
+      type: array
+      items:
+        type: string
+    uid:
+      type: string
+    name:
+      type: string
+    album:
+      type: string
+    artist:
+      type: string
+    features:
+      type: object
+      additionalProperties:
+        type: number
+    photoUrl:
+      type: string
+      format: url
+    createdAt:
+      type: integer
+    updatedAt:
+      type: integer
+  required:
+    - id
+    - genres
+    - uid

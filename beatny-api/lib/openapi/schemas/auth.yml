@@ -1,0 +1,31 @@
+AccessToken:
+  title: Beacon
+  type: object
+  additionalProperties: false
+  properties:
+    accessToken:
+      type: string
+    refreshToken:
+      type: string
+    expiresIn:
+      type: integer
+  required:
+    - accessToken
+    - refreshToken
+    - expiresIn
+
+RefreshToken:
+  title: Beacon
+  type: object
+  additionalProperties: false
+  properties:
+    accessToken:
+      type: string
+    refreshToken:
+      type: string
+    expiresIn:
+      type: integer
+  required:
+    - accessToken
+    - refreshToken
+    - expiresIn

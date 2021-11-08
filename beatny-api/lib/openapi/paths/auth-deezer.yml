@@ -1,0 +1,33 @@
+auth:
+  get:
+    tags:
+      - Authentication
+      - Deezer
+    operationId: DeezerAuthController.auth
+    responses:
+      '302':
+        description: Redirect
+
+callback:
+  get:
+    tags:
+      - Authentication
+      - Deezer
+    operationId: DeezerAuthController.callback
+    parameters:
+      - name: code
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+        application/json:
+          schema:
+            $ref: '../schemas/auth.yml#/AccessToken'
+      '401':
+        description: Unauthorized

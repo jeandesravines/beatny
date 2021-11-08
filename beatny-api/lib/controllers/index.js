@@ -1,0 +1,6 @@
+export { default as StatusController } from './StatusController'
+export { default as PlaylistController } from './PlaylistController'
+export { default as DeezerAuthController } from './DeezerAuthController'
+export { default as SpotifyAuthController } from './SpotifyAuthController'
+export { default as SessionController } from './SessionController'
+export { default as AuthController } from './AuthController'

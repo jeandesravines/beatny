@@ -1,0 +1,12 @@
+Location:
+  title: Location
+  type: object
+  additionalProperties: false
+  properties:
+    lat:
+      type: number
+    lng:
+      type: number
+  required:
+    - lat
+    - lng

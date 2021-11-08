@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+BASEDIR=$(dirname $0)
+WORKDIR=$BASEDIR/..
+
+docker-compose \
+  -p beatny \
+  -f $WORKDIR/docker-compose.yml \
+  -f $WORKDIR/docker-compose.override.yml \
+  $@
